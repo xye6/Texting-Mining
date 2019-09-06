@@ -10,73 +10,73 @@ def iterbrowse(path):
         for filename in files:
             yield os.path.join(home, filename)
 #1
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD ADOS"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD ADOS"):
     alist.append(fullname)
-file_ADOS=[(i,item) for i, item in enumerate(alist)]
+file_ADOS = [(i,item) for i, item in enumerate(alist)]
 #2
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD IEP"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD IEP"):
     alist.append(fullname)
-file_IEP=[(i,item) for i, item in enumerate(alist)]
+file_IEP = [(i,item) for i, item in enumerate(alist)]
 #3
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD Parent Form"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD Parent Form"):
     alist.append(fullname)
-file_Parent_Form=[(i,item) for i, item in enumerate(alist)]
+file_Parent_Form = [(i,item) for i, item in enumerate(alist)]
 #4
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD Parent Questionnaire"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD Parent Questionnaire"):
     alist.append(fullname)
-file_Parent_Questionnaire=[(i,item) for i, item in enumerate(alist)]
+file_Parent_Questionnaire = [(i,item) for i, item in enumerate(alist)]
 #5
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD PCP"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD PCP"):
     alist.append(fullname)
-file_PCP=[(i,item) for i, item in enumerate(alist)]
+file_PCP = [(i,item) for i, item in enumerate(alist)]
 #6
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD School"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD School"):
     alist.append(fullname)
-file_School=[(i,item) for i, item in enumerate(alist)]
+file_School = [(i,item) for i, item in enumerate(alist)]
 #7
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD School Questionnaire"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD School Questionnaire"):
     alist.append(fullname)     
-file_School_Questionnaire=[(i,item) for i, item in enumerate(alist)]
+file_School_Questionnaire = [(i,item) for i, item in enumerate(alist)]
 #8
-alist=[]
-for fullname in iterbrowse("/scratch/tsmith8_lab/xye6/data/KDD Testing and Psych"):
+alist = []
+for fullname in iterbrowse("~/xye6/data/KDD Testing and Psych"):
     alist.append(fullname)    
-file_Testing_and_Psych=[(i,item) for i, item in enumerate(alist)]
+file_Testing_and_Psych = [(i,item) for i, item in enumerate(alist)]
 
 
 def extract_info(catalog_info):
-    patient_info=[]
+    patient_info = []
 
     for i in range(len(catalog_info)):
 
-        test_word=catalog_info[i][1]
+        test_word = catalog_info[i][1]
         
         if 'MRN' not in test_word:
             continue
         else:
 
-            names =[''.join(re.findall(r'[A-Z]*[,][ ]*[A-Z]*', test_word))]
+            names = [''.join(re.findall(r'[A-Z]*[,][ ]*[A-Z]*', test_word))]
 
-            Encounter=re.findall(r'\d+',re.findall(r'(?<=Encounter)(.*?)(?=\--)',test_word)[0])
-            if len(Encounter)==0:
+            Encounter = re.findall(r'\d+',re.findall(r'(?<=Encounter)(.*?)(?=\--)',test_word)[0])
+            if len(Encounter) == 0:
                     Encounter.append('')
 
-            MRN=re.findall(r'E\d{3,12}',test_word)
-            if len(MRN)==0:
+            MRN = re.findall(r'E\d{3,12}',test_word)
+            if len(MRN) == 0:
                     MRN.append('')
 
-            if len(re.findall(r'(?<=--Vi)(.*?)(?=\.)',test_word))==0:
-                    Visit=[]
+            if len(re.findall(r'(?<=--Vi)(.*?)(?=\.)',test_word)) == 0:
+                    Visit = []
             else:
                     Visit=re.findall(r'\d{3,12}',re.findall(r'(?<=--Vi)(.*?)(?=\.)',test_word)[0])
-            if len(Visit)==0:
+            if len(Visit) == 0:
                     Visit.append('')
 
             a=[names,Encounter,MRN,Visit]
