@@ -1,7 +1,6 @@
 
 # coding: utf-8
 
-# In[4]:
 
 import os
 import re
@@ -103,19 +102,3 @@ KDD_PCP = extract_info(file_PCP)
 KDD_School = extract_info(file_School)
 KDD_School_Questionnaire = extract_info(file_School_Questionnaire)
 KDD_Testing_and_Psych = extract_info(file_Testing_and_Psych)
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
